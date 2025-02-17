@@ -12,8 +12,8 @@ public class Punto {
 	    }
 
 	    public double[] coordPolares() {
-	        double r = Math.sqrt(x * x + y * y);
-	        double theta = Math.atan2(y, x);
+	        float r = Math.sqrt(x * x + y * y);
+	        float theta = Math.atan2(y, x);
 	        return new double[]{r, theta};
 	    }
 
