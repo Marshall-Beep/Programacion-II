@@ -11,7 +11,7 @@ class Punto:
         return self.x, self.y
 
     def coord_polares(self):
-        radio = math.sqrt(self.x * self.x + self.y * self.y)
+        r = math.sqrt(self.x * self.x + self.y * self.y)
         angulo = math.degrees(math.atan2(self.y, self.x))  # 
         return radio, angulo
 
