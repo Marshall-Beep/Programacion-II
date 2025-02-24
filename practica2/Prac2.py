@@ -33,8 +33,8 @@ class Linea:
 # Clase Círculo
 class Circulo:
     def __init__(self, centro: Punto, radio: float):
-        self.centro = centro
-        self.radio = radio
+        self.centro = c
+        self.radio = r
 
     def __str__(self):
         return f"Círculo con centro en {self.centro} y radio {self.radio}"
