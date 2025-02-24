@@ -12,7 +12,7 @@ class Punto:
 
     def coord_polares(self):
         r = math.sqrt(self.x * self.x + self.y * self.y)
-        angulo = math.degrees(math.atan2(self.y, self.x))  # 
+        angulo = math.degrees(math.atan2(self.y, self.x))  
         return radio, angulo
 
     def __str__(self):
@@ -40,7 +40,7 @@ class Circulo:
         return f"Círculo con centro en {self.centro} y radio {self.radio}"
 
     def dibuja_circulo(self, ax):
-        circulo = plt.Circle((self.centro.x, self.centro.y), self.radio, color='r', fill=False, label="Círculo")  # Rojo
+        circulo = plt.Circle((self.centro.x, self.centro.y), self.radio, color='r', fill=False, label="Círculo")  
         ax.add_patch(circulo)
 
 # Configurar puntos, línea y círculo
