@@ -28,7 +28,7 @@ class Linea:
         return f"Línea de {self.p1} a {self.p2}"
 
     def dibuja_linea(self, ax):
-        ax.plot([self.p1.x, self.p2.x], [self.p1.y, self.p2.y], 'b-', label="Línea")  # Azul
+        ax.plot([self.p1.x, self.p2.x], [self.p1.y, self.p2.y], 'b-', label="Línea")  
 
 # Clase Círculo
 class Circulo:
