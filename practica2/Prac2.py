@@ -43,7 +43,7 @@ class Circulo:
         circulo = plt.Circle((self.centro.x, self.centro.y), self.radio, color='r', fill=False, label="Círculo")  
         ax.add_patch(circulo)
 
-# Configurar puntos, línea y círculo
+
 p1 = Punto(0, 3)
 p2 = Punto(4, 6)
 l = Linea(p1, p2)
@@ -57,7 +57,8 @@ ax.set_ylim(-5, 10)
 l.dibuja_linea(ax)
 c.dibuja_circulo(ax)
 
-ax.plot(p1.x, p1.y, 'ko', label=f"P1 {p1}")  # Punto negro
+ax.plot(p1.x, p1.y, 'ko', label=f"P1 {p1}")  
+
 ax.plot(p2.x, p2.y, 'ko', label=f"P2 {p2}")
 
 
