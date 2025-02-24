@@ -1,85 +1,77 @@
-package practica2;
+import javax.swing.*;
+import java.awt.*;
 
-public class Prac2 {
-    public static void main(String[] args) {
-        Punto p1 = new Punto(0, 3);
-        Punto p2 = new Punto(4, 6);
+public class Prac2 extends JPanel {
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2 = (Graphics2D) g;
+
+        Punto p1 = new Punto(50, 150);
+        Punto p2 = new Punto(250, 300);
         Linea l = new Linea(p1, p2);
-        Circulo c = new Circulo(p1, 3.0f);
+        Circulo c = new Circulo(p1, 50);
 
-        System.out.println(l);
-        l.dibujaLinea();
+        l.dibujaLinea(g2);
+        c.dibujaCirculo(g2);
+        dibujarPunto(g2, p1);
+        dibujarPunto(g2, p2);
+    }
 
-        System.out.println(c);
-        c.dibujaCirculo();
+    public void dibujarPunto(Graphics2D g2, Punto p) {
+        g2.setColor(Color.BLACK);  // Color negro
+        g2.fillOval((int) p.x - 3, (int) p.y - 3, 6, 6);  // Dibujar un punto pequeño
+    }
+
+    public static void main(String[] args) {
+        JFrame ventana = new JFrame("Gráfico en Swing");
+        ventana.setSize(400, 400);
+        ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        ventana.add(new Prac2());
+        ventana.setVisible(true);
     }
 }
 
+// CLASE PUNTO
 class Punto {
-    public float x;
-    public float y;
+    public float x, y;
 
     public Punto(float x, float y) {
         this.x = x;
         this.y = y;
     }
-
-    public float[] coord_cartesianas() {
-        return new float[]{this.x, this.y};
-    }
-
-    public float[] coord_polares() {
-        float radio = (float) Math.sqrt(this.x * this.x + this.y * this.y);
-        float angulo = (float) Math.atan2(this.y, this.x); // atan2(y, x) evita errores
-        angulo = (float) Math.toDegrees(angulo);
-        return new float[]{radio, angulo};
-    }
-
-    public String toString() {
-        return String.format("(%.2f, %.2f)", this.x, this.y);
-    }
 }
 
-
-//CLASE LINEA 
-
-
+// CLASE LINEA
 class Linea {
-    public Punto p1;
-    public Punto p2;
+    public Punto p1, p2;
 
     public Linea(Punto p1, Punto p2) {
         this.p1 = p1;
         this.p2 = p2;
     }
 
-    public String toString() {
-        return "Línea de " + p1 + " a " + p2;
-    }
-
-    public void dibujaLinea() {
-        System.out.println("linea en " + p1 + " y " + p2);
+    public void dibujaLinea(Graphics2D g2) {
+        g2.setColor(Color.BLUE); 
+        g2.setStroke(new BasicStroke(2)); 
+        g2.drawLine((int) p1.x, (int) p1.y, (int) p2.x, (int) p2.y); 
     }
 }
 
-
-//CLASE CIRCULO
-
-
+// CLASE CIRCULO
 class Circulo {
     public Punto centro;
     public float radio;
 
-    public Circulo(Punto c, float r) {
-        this.centro = c;
-        this.radio = r;
+    public Circulo(Punto centro, float radio) {
+        this.centro = centro;
+        this.radio = radio;
     }
 
-    public String toString() {
-        return "Círculo centro " + centro + " y radio " + radio;
-    }
-
-    public void dibujaCirculo() {
-        System.out.println("Dibujando círculo con centro " + centro + " y radio " + radio);
+    public void dibujaCirculo(Graphics2D g2) {
+        g2.setColor(Color.RED); 
+        g2.setStroke(new BasicStroke(2));
+        g2.drawOval((int) (centro.x - radio), (int) (centro.y - radio), (int) (radio * 2), (int) (radio * 2));
     }
 }
