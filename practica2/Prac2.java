@@ -20,7 +20,7 @@ public class Prac2 extends JPanel {
     }
 
     public void dibujarPunto(Graphics2D g2, Punto p) {
-        g2.setColor(Color.BLACK);  // Color negro
+        g2.setColor(Color.BLACK);  
         g2.fillOval((int) p.x - 3, (int) p.y - 3, 6, 6);  // Dibujar un punto pequeño
     }
 
@@ -61,8 +61,8 @@ class Linea {
 
 // CLASE CIRCULO
 class Circulo {
-    public Punto centro;
-    public float radio;
+    public Punto c;
+    public float r;
 
     public Circulo(Punto centro, float radio) {
         this.centro = centro;
